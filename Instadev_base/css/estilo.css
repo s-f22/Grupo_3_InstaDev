@@ -167,6 +167,7 @@ header{
     color: #fff;
 }
 .editar_perfil{
+    
     display: flex;
     justify-content: center;
 }
@@ -183,7 +184,7 @@ header{
 }
 .ed_P{
     height: 60px;
-    width: 300px;
+    width: 15%;
     border-left: 2.5px solid black;
     display: flex;
     justify-content: center;
@@ -196,7 +197,7 @@ header{
     font-size: 15px;
 }
 .perfil_U{
-    width: 100%;
+    width: 85%;
     height: 640px;
     border-left: 1px solid rgb(66, 65, 65);
 }
@@ -213,8 +214,36 @@ header{
     flex-direction: column;
     height: 100%;
     justify-content: space-evenly;
-    margin-left: 21%;
+    margin-left: 10%;
+    width: 100%;
+    
 }
+
+.inputs .input_nome{
+    width: 80%;
+}
+
+.input_NU{
+    width: 80%;
+}
+
+.input_email{
+    width: 80%;
+}
+
+
+.inputs .N{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
+.input_NU .NU{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
 .inputs input{
     width: 354px;
     height: 30px;
@@ -222,6 +251,34 @@ header{
     box-sizing: border-box;
     border-radius: 2px;
 }
+
+.inputs .title{
+    width: 20%;
+    text-align: right;
+    padding-right: 2%;
+}
+
+.input_NU .title{
+    width: 20%;
+}
+
+.right{
+    width: 80%;
+}
+
+.NU_right{
+    width: 80%;
+}
+
+.span{
+    width: 354px;
+}
+
+.textoSpam{
+    width: 354px;
+}
+
+
 .inputs .S{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -232,6 +289,12 @@ header{
     line-height: 19px;
     color: #000000;
 }
+
+.input_email .E{
+    display: flex;
+    
+}
+
 .inputs span{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
@@ -245,8 +308,11 @@ header{
 }
 .bt{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 80%;
+    padding-right: 15%;
+    
+    
 }
 .bt input{
     background: #2686CC;
