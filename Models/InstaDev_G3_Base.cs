@@ -1,11 +1,19 @@
+
+//------------------------------------SUPERCLASSE COM METEDOS QUE SERÃO HERDADOS--------------------
+
 using System.Collections.Generic;
 using System.IO;
 
 namespace Grupo_3_InstaDev.Models
 {
+
     public class InstaDev_G3_Base
     {
-        public void CriarPastaEArquivo(string _caminho)     // Metodo para criar arquivo e pasta conforme caminho fornecido pela string
+
+
+
+        // Metodo para criar arquivo e pasta conforme caminho fornecido pela string
+        public void CriarPastaEArquivo(string _caminho)
         {
             string pasta = _caminho.Split("/")[0];
             string arquivo = _caminho.Split("/")[1];
@@ -22,29 +30,44 @@ namespace Grupo_3_InstaDev.Models
 
         }
 
-        public List<string> LerTodasLinhasCSV(string _caminho)      // Metodo para ler as linhas/conteudo do arquivo CSV, salvar este conteudo em uma lista de strings e retornar a LISTA DE STRINGS (não o arquivo csv) para acesso onde for chamada
+
+
+
+
+        // Metodo utilizado como parte do processo de alteração/atualização dos CRUDs. *Ver comentários no metodo Alterar() da classe Usuario.
+        // Metodo para ler as linhas/conteudo do arquivo CSV, salvar este conteudo em uma lista de strings e retornar a LISTA DE STRINGS (não o arquivo csv) para local onde for chamado
+        public List<string> LerTodasLinhasCSV(string _caminhoDoArquivo)
         {
-            List<string> linhas = new List<string>();
+            List<string> listaComConteudoDasLinhas = new List<string>();
 
-            using (StreamReader file = new StreamReader(_caminho))
+            //using é um recurso/biblioteca que abre o arquivo para leitura, fechando-o assim que sua utilização for concluída. Trabalha em conjunto com as bibliotecas Stream
+            using (StreamReader arquivoTemporario = new StreamReader(_caminhoDoArquivo))
             {
-                string linha;
+                string conteudoDeCadaLinha;
 
-                while ((linha = file.ReadLine()) != null)
+                while ((conteudoDeCadaLinha = arquivoTemporario.ReadLine()) != null)
                 {
-                    linhas.Add(linha);
+                    listaComConteudoDasLinhas.Add(conteudoDeCadaLinha);
                 }
             }
-            return linhas;
+
+            return listaComConteudoDasLinhas;
         }
 
-        public void ReescreverCSV(string _caminho, List<string> linhas)     // Metodo que recebe uma lista de strings, faz a leitura linha-a-linha da lista e converte os dados em um arquivo csv, conforme caminho especificado que tambem deve ser fornecido como parametro; funciona em conjunto com o metodo LerTodasLinhasCSV, acima
+
+
+
+
+        // Metodo utilizado como parte do processo de alteração/atualização dos CRUDs. *Ver comentários no metodo Alterar() da classe Usuario.
+        // Metodo que recebe uma lista de strings, faz a leitura linha-a-linha da lista e converte os dados em um arquivo csv, conforme caminho especificado que tambem deve ser fornecido como parametro; funciona em conjunto com o metodo LerTodasLinhasCSV, acima
+        public void ReescreverCSV(string _caminhoDoArquivo, List<string> listaComConteudoEmLinhas)
         {
-            using (StreamWriter output = new StreamWriter(_caminho))
+            //using é um recurso/biblioteca que abre o arquivo para leitura, fechando-o assim que sua utilização for concluída. Trabalha em conjunto com as bibliotecas Stream
+            using (StreamWriter reescreverDadosTemporarios = new StreamWriter(_caminhoDoArquivo))
             {
-                foreach (var item in linhas)
+                foreach (var cadaLinha in listaComConteudoEmLinhas)
                 {
-                    output.Write(item + "\n");
+                    reescreverDadosTemporarios.Write(cadaLinha + "\n");
                 }
             }
         }
