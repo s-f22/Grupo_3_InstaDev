@@ -9,8 +9,8 @@ namespace Grupo_3_InstaDev.Models
 
         //---------------------------ATRIBUTOS DA CLASSE-----------------------------------------
 
-        protected string Email { get; set; }
-        protected string Senha { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
         public string NomeCompleto { get; set; }
         public string NomeDeUsuario { get; set; }
         public string ImagemUsuario { get; set; }

@@ -24,6 +24,7 @@ namespace Grupo_3_InstaDev.Controllers
         //---------------------------METODOS DA CLASSE-----------------------------------------
 
         //IActionResult é um tipo de retorno do método Index, especifico da classe Controller. Metodo padrão que retorna para a pagina principal correspondente a Usuario (neste caso)
+        [Route("Listar")]
         public IActionResult Index()
         {
 
@@ -35,6 +36,7 @@ namespace Grupo_3_InstaDev.Controllers
         //--------------------------------------------------------------------------------------
 
         //IFormCollection é um tipo de classe AspNet capaz de receber dados de formularios html
+        [Route("Cadastrar")]
         public IActionResult Cadastrar( IFormCollection formulario )
         {
             Usuario usuarioParaReceberInfosDoFormulario = new Usuario();
@@ -52,7 +54,7 @@ namespace Grupo_3_InstaDev.Controllers
             ViewBag.Usuarios = usuarioParaAcessoAosMetodosModel.LerTodosUsuarios();
 
             //Redireciona como retorno para a mesma pagina, pois queremos que apos o cadastro o usuario permaneça na mesma view
-            return LocalRedirect("~/Usuario"); //21:30
+            return LocalRedirect("~/Usuario/Listar"); 
 
         }
 

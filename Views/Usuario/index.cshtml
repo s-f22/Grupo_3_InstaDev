@@ -1,0 +1,59 @@
+@* Instancia a model Usuario *@
+@model Usuario
+
+@{
+    @* Refere-se ao titulo da pagina, presente na estrutura head, da pasta Shared Layout *@
+    ViewData["Title"] = "Usuarios";
+}
+
+@* O metodo POST do formulario captura os valores preenchidos pelo usuario; O campo action refere-se a qual metodo em
+    Controller será executado *@
+@* Nos campos do formularios devem ser atribuidos os mesmos names definidos na classe Controller *@
+<form method="POST" action='url.action("Cadastrar")'>
+
+    <label>ID</label>
+    <input type="text" name="IdUsuario">
+
+    <label>E-mail</label>
+    <input type="email" name="Email">
+
+    <label>Senha</label>
+    <input type="password" name="Senha">
+
+    <label>Nome Completo</label>
+    <input type="text" name="NomeCompleto">
+
+    <label>Nome de Usuario</label>
+    <input type="text" name="NomeDeUsuario">
+
+    <label>Foto</label>
+    <input type="file" name="ImagemUsuario">
+
+    <button type="submit" >Cadastrar</button>
+
+</form>
+@* classes bootstrap *@
+<table class="table table-striped table-responsive">  
+    <thead> @* cabeçalho da tabela *@
+        <th>ID</th>
+        <th>E-mail</th>
+        <th>Senha</th>
+        <th>Nome Completo</th>
+        <th>Nome de Usuario</th>
+        <th>Foto</th>
+    </thead>
+    <tbody> @* corpo da tabela *@
+        @* Usar foreach para ler todos os valores na viewbag que recebe os usuarios em controller *@
+        @foreach (var cadaUsuario in ViewBag.Usuarios)
+        {
+            <tr> @* table roll, linha da tabela *@
+                <td>@cadaUsuario.IdUsuario</td> @* table data, coluna da tabela *@
+                <td>@cadaUsuario.Email</td>
+                <td>@cadaUsuario.Senha</td>
+                <td>@cadaUsuario.NomeCompleto</td>
+                <td>@cadaUsuario.NomeDeUsuario</td>
+                <td>@cadaUsuario.ImagemUsuario</td>
+            </tr>
+        }
+    </tbody>
+</table>
