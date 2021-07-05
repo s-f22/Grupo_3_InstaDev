@@ -17,7 +17,7 @@ namespace Grupo_3_InstaDev.Controllers
             );
 
             if (logado != null){
-                HttpContext.Session.SetString("_UsuarioId", logado.Split(";")[4]);
+                HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[4]);
                 return LocalRedirect("~/Feed");
             }
             Mensagem = "Dados incorretos, tente novamente";
