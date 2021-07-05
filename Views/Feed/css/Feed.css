@@ -1,0 +1,330 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #FAFAFA;
+}
+header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid #F1F1F1;
+}
+.conteiner{
+    width: 62.5%;
+    height: 100%;
+} 
+.conteiner_header{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.buscar
+{
+  position: relative;
+  width: 300px;
+  height: 40px  ; 
+  background: #FAFAFA; 
+  margin-left: 11%;
+}
+.buscar input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 1px solid #DCDCDC;
+    outline: none;
+    border-radius: 4px;
+    padding: 0 10px 0 45px;
+    
+}   
+.buscar input::placeholder{
+    color: #AFAFAF;
+}
+.buscar .fa-search{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+    padding-right: 10px;
+    color: #AFAFAF;
+    border-right: 1px solid #fff;
+    border-right: 1px solid rgba(17, 16, 16, 0.424);
+}
+.icon_inte{
+    display: flex;
+    width: 195px;
+    justify-content: flex-end;
+    justify-content: space-between;
+}
+.icon_inte a{
+    text-decoration: none;
+    height: 27px;
+}
+.conteiner_seguindo{
+    width: 100%;
+    display: flex;
+    margin-top: 24px;
+}
+.conteiner_seguindo img{
+    padding-left: 32px;
+padding-right: 21px;
+}
+.seguindo{
+    display: flex;
+    justify-content: center;
+}
+.box_S{
+    width: 963px;
+    height: 113px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background: #FFFFFF;
+}
+.box_S a{
+    width: 137px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 15px;
+    /* padding-right: 15px;
+    padding-left: 10px; */
+    text-decoration: none; 
+}
+.box_S span{
+    margin-top: 4px;
+    margin-left: 20px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 501;
+    font-size: 13px;
+    line-height: 17px;
+    color: #000000;
+}
+.box_S img{
+    margin-left: 32px;
+    margin-right: 21px;
+}
+.user_name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user_name span{
+    font-family: Segoe UI;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+}
+.user_name h1{
+    font-family: Segoe UI;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 21px;
+color: #B6B6B6;
+}
+.postar{
+    background: #FFFFFF;
+    margin-top: 38px;
+    width: 964px;
+}
+.hearder_P{
+    display: flex;
+    align-items: center;
+    height: 72px;
+    margin-left: 26px;
+}
+.hearder_P span{
+    margin-left: 19px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000000;
+}
+.btn_postar{
+    height: 91px;
+    align-items: center;
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+    justify-content: space-around;
+}
+.btn_postar input[type="text"]{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    background: #FAFAFA;
+    border: 1px solid #EAEAEA;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 27px;
+    width: 310px;
+    margin-right: 4%;
+}
+.btn_postar input[placeholder="Digite a descrição da imagem..."]{
+    padding-left: 4%;
+    padding-left: 7%;
+}
+.btn_postar input[type="file"]{
+    /* Foi subistituido pela lebel(Não esta sendo ultilizado) */
+    background: #D1D1D1;
+    border-radius: 5px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #7D7D7D;
+    height: 27px;
+    
+    display: none;
+}
+label{
+    background: #D1D1D1;
+    border-radius: 5px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #7D7D7D;
+    height: 27px;
+    width: 291px;
+    padding-top: 4px;
+    display: flex;
+    justify-content: center;
+    margin-right: 4%;
+}
+.btn_postar input[type="submit"]{
+    background: #2686CC;
+    border-radius: 5px;
+    font-family: Segoe UI;
+    font-weight: 601;
+    font-size: 12px;
+    line-height: 16px;
+    color: #FFFFFF;
+    height: 27px;
+    border: none;
+    width: 245px;
+    display: flex;
+    justify-content: center;
+}
+.postado{
+    background: #FFFFFF;
+    width: 610px;
+    display: flex;
+    margin-top: 39px;
+    height: 65px;
+    
+} 
+.postado img{
+    margin-left: 16px;
+    height: 45px;
+    margin-top: 9px;
+}
+.user_name_Postado{
+    display: flex;
+    flex-direction: column;
+    margin-left: 13px;
+    margin-top: 13px;
+}  
+.user_name_Postado span{
+    margin-bottom: 2px;
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 601;
+    font-size: 13px;
+    line-height: 17px;
+    color: #000000;
+}
+.user_name_Postado h2{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 17px;
+    color: #000000;
+}
+.icon_but_postado{
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #fff;
+width: 610px;
+}
+
+.icon_but_postado input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: none;
+}
+.icon_but_postado i{
+    margin-right: 15px;
+}
+.Curt{
+    width: 610px;
+    background: #fff;
+}
+.curtidas{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    padding-left: 20px;
+    padding-top: 15px;
+    color: #000000;
+}
+.comentarios{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-top: 12px;
+    background: #FFF;
+    width: 610px;
+    height: 126px;
+}
+.comentarios .UserName_comentarios{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 601;
+    font-size: 13px;
+    line-height: 17px;
+    margin-right: 3px;
+    color: #000000;
+}
+.comentarios span{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: 501;
+    font-size: 13px;
+    line-height: 17px;
+    margin-bottom: 10px;
+    color: #000000;
+}
+.comentarios span a{
+    font-family: Segoe UI;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 17px;
+    text-decoration: none;
+    color: #2686CC;
+}
