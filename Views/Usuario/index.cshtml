@@ -9,7 +9,8 @@
 @* O metodo POST do formulario captura os valores preenchidos pelo usuario; O campo action refere-se a qual metodo em
     Controller será executado *@
 @* Nos campos do formularios devem ser atribuidos os mesmos names definidos na classe Controller *@
-<form method="POST" action='@Url.Action("Cadastrar")'>
+@* enctype permite fornecer/receber arquivos por meio do formulario  *@
+<form method="POST" action='@Url.Action("Cadastrar")' enctype="multipart/form-data">
 
     <label>ID</label>
     <input type="text" name="IdUsuario">
@@ -29,7 +30,7 @@
     <label>Foto</label>
     <input type="file" name="ImagemUsuario">
 
-    <button type="submit" >Cadastrar</button>
+    <button type="submit">Cadastrar</button>
 
 </form>
 @* classes bootstrap *@
@@ -52,7 +53,10 @@
                 <td>@cadaUsuario.Senha</td>
                 <td>@cadaUsuario.NomeCompleto</td>
                 <td>@cadaUsuario.NomeDeUsuario</td>
-                <td>@cadaUsuario.ImagemUsuario</td>
+                @* tag img com atribuição de imagens definidas na classe controller *@
+                <td><img src="/img/Usuarios/@cadaUsuario.ImagemUsuario" alt="imagem do usuario @cadaUsuario.NomeDeUsuario" width="50px"></td>
+                @* Botão de excluir usuario, utilizando o proprio Id do usuario como identificador a ser fornecido como parametro para o metodo Excluir da classe controller *@
+                <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir"asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
             </tr>
         }
     </tbody>

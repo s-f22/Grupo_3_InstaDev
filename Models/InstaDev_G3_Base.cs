@@ -1,5 +1,5 @@
 
-//------------------------------------SUPERCLASSE COM METEDOS QUE SERÃO HERDADOS--------------------
+//------------------------------------SUPERCLASSE COM METODOS QUE SERÃO HERDADOS--------------------
 
 using System.Collections.Generic;
 using System.IO;

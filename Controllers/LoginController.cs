@@ -20,8 +20,8 @@ namespace Grupo_3_InstaDev.Controllers
                 HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[4]);
                 return LocalRedirect("~/Feed");
             }
-            Mensagem = "Dados incorretos, tente novamente";
-            return LocalRedirect("~/")
+            //string Mensagem = "Dados incorretos, tente novamente";
+            return LocalRedirect("~/");
         }
     }
 }
