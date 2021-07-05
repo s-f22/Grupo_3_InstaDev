@@ -1,3 +1,4 @@
+using System.IO;
 using Grupo_3_InstaDev.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,7 @@ namespace Grupo_3_InstaDev.Controllers
 
         //--------------------------------------------------------------------------------------
 
+
         //IFormCollection é um tipo de classe AspNet capaz de receber dados de formularios html
         [Route("Cadastrar")]
         public IActionResult Cadastrar( IFormCollection formulario )
@@ -46,7 +48,39 @@ namespace Grupo_3_InstaDev.Controllers
             usuarioParaReceberInfosDoFormulario.Senha = (formulario["Senha"]);
             usuarioParaReceberInfosDoFormulario.NomeCompleto = (formulario["NomeCompleto"]);
             usuarioParaReceberInfosDoFormulario.NomeDeUsuario = (formulario["NomeDeUsuario"]);
-            usuarioParaReceberInfosDoFormulario.ImagemUsuario = (formulario["ImagemUsuario"]);
+            // usuarioParaReceberInfosDoFormulario.ImagemUsuario = (formulario["ImagemUsuario"]); - linha substituida pelo procedimento abaixo de upload de imagens
+
+
+            // INICIO DO UPLOAD DE IMAGEM --------------------------------------
+
+
+            // Verifica se o tamanho do arquivo carregado no formulario é maior que 0, ou seja, se existe alguma imagem
+            if (formulario.Files.Count > 0) 
+            {
+                //os arquivos são armazenados por padrão em um array, por isso os [];
+                //todos os arquivos estaticos (no caso, imagens, devem ser salvos na pasta local wwwroot). O metodo Path.Combine() da classe System.IO gerencia a combinação de locais internos à pasta do projeto ASP (wwwroot...) com a estrutura local do computador (C:/...)
+                var arquivoDeImagem = formulario.Files[0];
+                var pastaDeImagens = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Usuarios");
+
+                //verifica existencia da pasta onde as imagens serão salvas e cria, caso não exista
+                if ( ! Directory.Exists(pastaDeImagens) )
+                {
+                    Directory.CreateDirectory(pastaDeImagens);
+                }
+
+                //atribui o nome original do arquivo de imagem já com sua localização
+                var caminhoDaImagem = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", pastaDeImagens, arquivoDeImagem.FileName);
+
+                //FileStream cria um novo arquivo. Exige o caminho completo do arquivo e um modo de manipulação (Filemode), no caso, para criação do arquivo
+                using (var variavelTemporaria = new FileStream(caminhoDaImagem, FileMode.Create))
+                {
+                    //o arquivoDeImagem definido acima servirá como base para uma cópia que será feita atraves do filestream
+                    arquivoDeImagem.CopyTo(variavelTemporaria); //23:42
+                }
+            }
+
+            // FINAL DO UPLOAD DE IMAGEM ---------------------------------------
+
 
             usuarioParaAcessoAosMetodosModel.Criar(usuarioParaReceberInfosDoFormulario);
 
@@ -57,7 +91,6 @@ namespace Grupo_3_InstaDev.Controllers
             return LocalRedirect("~/Usuario/Listar"); 
 
         }
-
 
     }
 }

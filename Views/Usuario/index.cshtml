@@ -9,7 +9,7 @@
 @* O metodo POST do formulario captura os valores preenchidos pelo usuario; O campo action refere-se a qual metodo em
     Controller será executado *@
 @* Nos campos do formularios devem ser atribuidos os mesmos names definidos na classe Controller *@
-<form method="POST" action='url.action("Cadastrar")'>
+<form method="POST" action='@Url.Action("Cadastrar")'>
 
     <label>ID</label>
     <input type="text" name="IdUsuario">
