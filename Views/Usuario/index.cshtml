@@ -54,9 +54,9 @@
                 <td>@cadaUsuario.NomeCompleto</td>
                 <td>@cadaUsuario.NomeDeUsuario</td>
                 @* tag img com atribuição de imagens definidas na classe controller *@
-                <td><img src="/img/Usuarios/@cadaUsuario.ImagemUsuario" alt="imagem do usuario @cadaUsuario.NomeDeUsuario" width="50px"></td>
+                <td><img src="/img/Usuarios/@cadaUsuario.ImagemUsuario" alt="" width="50px"></td>
                 @* Botão de excluir usuario, utilizando o proprio Id do usuario como identificador a ser fornecido como parametro para o metodo Excluir da classe controller *@
-                <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir"asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
+                <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir" asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
             </tr>
         }
     </tbody>

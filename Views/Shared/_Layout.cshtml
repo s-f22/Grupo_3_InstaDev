@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @* Title com configuração para pegar o título de cada página *@
     <title>@ViewData["Title"] - Grupo_3_InstaDev</title>
-    <link rel="stylesheet" href="~/css/estilo_EdicaoDePerfil.css" /> 
+    <link rel="stylesheet" href="~/css/estilo_EdicaoDePerfil.css" />
     <script src="https://use.fontawesome.com/4fbb5acd57.js"></script>
 </head>
 <body>
@@ -37,7 +37,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - Grupo_3_InstaDev - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
@@ -45,6 +45,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false) *@
 </body>
 </html>
