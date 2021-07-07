@@ -1,10 +1,45 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "CadastroLogin";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    
-    <a class="navbar-brand" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a> @* Cria link para a View Usuario *@
+<div class="conteiner">
+    <div class="bg">
+        <div class="box logar">
+            <h2>Já tem uma conta ?</h2>
+            <button class="logarBut">Logar</button>
+        </div>
+        <div class="box cadastrar">
+            <h2>Não tem uma conta ?</h2>
+            <button class="cadasBut">Cadastrar-se</button>
+        </div>
+    </div>
+    <div class="formbx">
+        <div class="form login">
+            <form method="POST" action='@Url.Action("CadastroLoginController/Login")'>
+                <img src="~/img/img_EdicaoPerfil/Instadev.png" alt="">
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Senha">
+                <input type="submit" value="Entrar">
+                <a href="#" class="esqc">Esqueceu a senha?</a>
+            </form>
+        </div>
+
+        <div class="form cadas">
+            <form method="POST" asp-area="" asp-controller="CadastroLoginController" asp-action="Cadastrar">
+                <img src="~/img/img_EdicaoPerfil/Instadev.png" alt="">
+                @* <input type="email" placeholder="Email">
+                <input type="text" placeholder="NomeCompleto">
+                <input type="text" placeholder="NomeDeUsuario">
+                <input type="password" placeholder="Senha"> *@
+                <input type="email" name="Email">
+                <input type="text" name="NomeCompleto">
+                <input type="text" name="NomeDeUsuario">
+                <input type="password" name="Senha">
+                <input type="submit" value="Cadastrar-se">
+                
+            </form>
+        </div>
+    </div>
 </div>
+
+<script src="~/js/site.js"></script>

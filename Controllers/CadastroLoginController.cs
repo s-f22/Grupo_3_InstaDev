@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using Grupo_3_InstaDev.Models;
 using Microsoft.AspNetCore.Http;
@@ -7,8 +9,8 @@ namespace Grupo_3_InstaDev.Controllers
 {
 
     //Rotas são endereços que ficam na URL do navegador, representando qual o controller a ser acessado após a raiz localhost5001
-    [Route("Usuario")]
-    public class UsuarioController : Controller  //  Herdar a SuperClasse AspNet Controller
+    [Route("CadastroLoginController")]
+    public class CadastroLoginController : Controller  //  Herdar a SuperClasse AspNet Controller
 
     {
 
@@ -19,6 +21,10 @@ namespace Grupo_3_InstaDev.Controllers
 
         //Instancia da classe Usuario para acessar seus metodos em model
         Usuario usuarioParaAcessoAosMetodosModel = new Usuario();
+
+        public string Mensagem { get; set; }
+
+
 
 
 
@@ -43,50 +49,16 @@ namespace Grupo_3_InstaDev.Controllers
         {
             Usuario usuarioParaReceberInfosDoFormulario = new Usuario();
 
-            usuarioParaReceberInfosDoFormulario.IdUsuario = int.Parse(formulario["IdUsuario"]);
+
+            Random gerarID = new Random();
+
+            usuarioParaReceberInfosDoFormulario.IdUsuario = gerarID.Next(1, 1000);
             usuarioParaReceberInfosDoFormulario.Email = (formulario["Email"]);
             usuarioParaReceberInfosDoFormulario.Senha = (formulario["Senha"]);
             usuarioParaReceberInfosDoFormulario.NomeCompleto = (formulario["NomeCompleto"]);
             usuarioParaReceberInfosDoFormulario.NomeDeUsuario = (formulario["NomeDeUsuario"]);
             // usuarioParaReceberInfosDoFormulario.ImagemUsuario = (formulario["ImagemUsuario"]); - linha substituida pelo procedimento abaixo de upload de imagens
 
-
-            // INICIO DO UPLOAD DE IMAGEM 
-
-
-            // Verifica se o tamanho do arquivo carregado no formulario é maior que 0, ou seja, se existe alguma imagem
-            if (formulario.Files.Count > 0)
-            {
-                //os arquivos são armazenados por padrão em um array, por isso os [];
-                //todos os arquivos estaticos (no caso, imagens, devem ser salvos na pasta local wwwroot). O metodo Path.Combine() da classe System.IO gerencia a combinação de locais internos à pasta do projeto ASP (wwwroot...) com a estrutura local do computador (C:/...)
-                var arquivoDeImagem = formulario.Files[0];
-                var pastaDeImagens = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Usuarios");
-
-                //verifica existencia da pasta onde as imagens serão salvas e cria, caso não exista
-                if (!Directory.Exists(pastaDeImagens))
-                {
-                    Directory.CreateDirectory(pastaDeImagens);
-                }
-
-                //atribui o nome original do arquivo de imagem já com sua localização
-                var caminhoDaImagem = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/", pastaDeImagens, arquivoDeImagem.FileName);
-
-                //FileStream cria um novo arquivo. Exige o caminho completo do arquivo e um modo de manipulação (Filemode), no caso, para criação do arquivo
-                using (var variavelTemporaria = new FileStream(caminhoDaImagem, FileMode.Create))
-                {
-                    //o arquivoDeImagem definido acima servirá como base para uma cópia que será feita atraves do Filestream
-                    arquivoDeImagem.CopyTo(variavelTemporaria);
-                }
-                //atribuição do nome do arquivo que foi criado no sistema ao objeto a que ele corresponde
-                usuarioParaAcessoAosMetodosModel.ImagemUsuario = arquivoDeImagem.FileName;
-            }
-            else
-            {
-                //definição de uma imagem padrão para usuarios que não carreguem uma imagem personalizada
-                usuarioParaAcessoAosMetodosModel.ImagemUsuario = "padrao.png";
-            }
-
-            // FINAL DO UPLOAD DE IMAGEM 
 
 
             usuarioParaAcessoAosMetodosModel.Criar(usuarioParaReceberInfosDoFormulario);
@@ -95,7 +67,8 @@ namespace Grupo_3_InstaDev.Controllers
             ViewBag.Usuarios = usuarioParaAcessoAosMetodosModel.LerTodosUsuarios();
 
             //Redireciona como retorno para a mesma pagina, pois queremos que apos o cadastro o usuario permaneça na mesma view
-            return LocalRedirect("~/Usuario/Listar");
+            return LocalRedirect("~/CadastroLoginController/Listar");
+            //return View();
 
         }
 
@@ -110,8 +83,34 @@ namespace Grupo_3_InstaDev.Controllers
         {
             usuarioParaAcessoAosMetodosModel.Deletar(idParaExcluir);
             ViewBag.Usuarios = usuarioParaAcessoAosMetodosModel.LerTodosUsuarios();
-            return LocalRedirect("~/Usuario/Listar");
+            return LocalRedirect("~/CadastroLoginController/Listar");
         }
+
+
+        //---------------------------------------------------------------------------------------
+
+
+
+        [Route("Login")]
+        public IActionResult Logar(IFormCollection form)
+        {
+
+            List<string> UsuarioCSV = usuarioParaAcessoAosMetodosModel.LerTodasLinhasCSV("DataBase/Usuario.csv");
+
+            var logado = UsuarioCSV.Find( x =>
+               x.Split(";")[1] == form["Email"] &&
+               x.Split(";")[2] == form["Senha"]
+                );
+
+            if (logado != null)
+            {
+                HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[4]);
+                return LocalRedirect("~/Feed");
+            }
+            Mensagem = "Dados incorretos, tente novamente";
+            return LocalRedirect("~/CadastroLoginController/Login");
+        }
+
 
     }
 }

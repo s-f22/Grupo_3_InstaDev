@@ -28,6 +28,5 @@ namespace Grupo_3_InstaDev.Controllers
             return View();
         }
 
-        
     }
 }

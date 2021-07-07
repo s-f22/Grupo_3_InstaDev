@@ -1,50 +1,58 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @* Title com configuração para pegar o título de cada página *@
     <title>@ViewData["Title"] - Grupo_3_InstaDev</title>
-    <link rel="stylesheet" href="~/css/estilo_EdicaoDePerfil.css" /> 
+
+    @if (ViewData["Title"].ToString() != "CadastroLogin" && ViewData["Title"].ToString() != "CadastroLoginController")
+    {
+        <link rel="stylesheet" href="~/css/estilo_EdicaoDePerfil.css">
+    }
+
+    <link rel="stylesheet" href="~/css/estilo_CadastroLogin.css">
     <script src="https://use.fontawesome.com/4fbb5acd57.js"></script>
 </head>
+
 <body>
-    <header>
-        <div class="conteiner">
-            <div class="conteiner_header">
-                <a href=""> <img src="~/img/img_EdicaoPerfil/Instadev.png" alt=""></a>
-                <div class="buscar">
-                    <input type="text" placeholder="Buscar">
-                    <i class="fa fa-search" aria-hidden="true"></i>
+    @if (ViewData["Title"].ToString() != "CadastroLogin" && ViewData["Title"].ToString() != "CadastroLoginController")
+    {
+        <header>
+            <div class="conteiner">
+                <div class="conteiner_header">
+                    <a href=""> <img src="~/img/img_EdicaoPerfil/Instadev.png" alt=""></a>
+                    <div class="buscar">
+                        <input type="text" placeholder="Buscar">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </div>
+                    <ul class="icon_inte">
+                        <a href=""><i class="fa fa-home" aria-hidden="true" style="font-size: 26px; color: black;"></i></a>
+                        <a href=""><i class="fa fa-paper-plane-o" aria-hidden="true"
+                            style="font-size: 26px; color: black;"></i></a>
+                        <a href=""><i class="fa fa-compass" aria-hidden="true"
+                            style="font-size: 26px; color: black;"></i></a>
+                        <a href=""><i class="fa fa-heart-o" aria-hidden="true" style="font-size: 26px; color: red;"></i></a>
+                        <a href=""><img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt=""></a>
+                    </ul>
                 </div>
-                <ul class="icon_inte">
-                    <a href=""><i class="fa fa-home" aria-hidden="true" style="font-size: 26px; color: black;"></i></a>
-                    <a href=""><i class="fa fa-paper-plane-o" aria-hidden="true"
-                            style="font-size: 26px; color: black;"></i></a>
-                    <a href=""><i class="fa fa-compass" aria-hidden="true"
-                            style="font-size: 26px; color: black;"></i></a>
-                    <a href=""><i class="fa fa-heart-o" aria-hidden="true" style="font-size: 26px; color: red;"></i></a>
-                    <a href=""><img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt=""></a>
-                </ul>
             </div>
-        </div>
-        
-    </header>
+        </header>
+    }
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Grupo_3_InstaDev - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
