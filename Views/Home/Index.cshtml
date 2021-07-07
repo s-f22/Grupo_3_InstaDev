@@ -9,32 +9,32 @@
             <button class="logarBut">Logar</button>
         </div>
         <div class="box cadastrar">
-            <h2>Não tem uma conta ?</h2>
+            <h2>Não tem uma conta?</h2>
             <button class="cadasBut">Cadastrar-se</button>
         </div>
     </div>
     <div class="formbx">
         <div class="form login">
-            <form method="POST" action='@Url.Action("CadastroLoginController/Login")'>
+            
+            <form method="POST" action='@Url.Action("Logar")'>
                 <img src="~/img/img_EdicaoPerfil/Instadev.png" alt="">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Senha">
+                <input type="email" placeholder="Email" name="Email" required>
+                <input type="password" placeholder="Senha" name="Senha" required>
+
+                <div>@TempData.Peek("Mensagem")</div>
+
                 <input type="submit" value="Entrar">
                 <a href="#" class="esqc">Esqueceu a senha?</a>
             </form>
         </div>
 
         <div class="form cadas">
-            <form method="POST" asp-area="" asp-controller="CadastroLoginController" asp-action="Cadastrar">
+            <form method="POST" action='@Url.Action("Cadastrar")'>
                 <img src="~/img/img_EdicaoPerfil/Instadev.png" alt="">
-                @* <input type="email" placeholder="Email">
-                <input type="text" placeholder="NomeCompleto">
-                <input type="text" placeholder="NomeDeUsuario">
-                <input type="password" placeholder="Senha"> *@
-                <input type="email" name="Email">
-                <input type="text" name="NomeCompleto">
-                <input type="text" name="NomeDeUsuario">
-                <input type="password" name="Senha">
+                <input type="email" placeholder="Email" name="Email">
+                <input type="text" placeholder="NomeCompleto" name="NomeCompleto">
+                <input type="text" placeholder="NomeDeUsuario" name="NomeDeUsuario">
+                <input type="password" placeholder="Senha" name="Senha">
                 <input type="submit" value="Cadastrar-se">
                 
             </form>

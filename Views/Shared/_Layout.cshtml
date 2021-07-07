@@ -36,6 +36,15 @@
                             style="font-size: 26px; color: black;"></i></a>
                         <a href=""><i class="fa fa-heart-o" aria-hidden="true" style="font-size: 26px; color: red;"></i></a>
                         <a href=""><img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt=""></a>
+                        @if (ViewBag.Username != null)
+                        {
+                            <li>Olá @ViewBag.Username</li>
+                            <li><a asp-area="" asp-controller="Login" asp-action="Logout"></a>LOGOUT</li>
+                        }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Login" asp-action="Index"></a>LOGIN</li>
+                        }
                     </ul>
                 </div>
             </div>

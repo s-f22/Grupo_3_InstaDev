@@ -105,14 +105,19 @@ namespace Grupo_3_InstaDev.Controllers
 
             if (logado != null)
             {
-                HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[4]);
-                return LocalRedirect("~/");
+                HttpContext.Session.SetString("_NomeDeUsuario", logado.Split(";")[4]);
+                return LocalRedirect("~/Feed");
             }
-            Mensagem = "Dados incorretos, tente novamente";
+            Mensagem = "Dados incorretos, tente novamente.";
             return LocalRedirect("~/CadastroLoginController/Login");
         }
 
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("_UserName");
+            return LocalRedirect("~/");
+        }
     }
 }
 

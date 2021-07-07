@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Grupo_3_InstaDev.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Grupo_3_InstaDev.Controllers
 {
@@ -20,6 +21,7 @@ namespace Grupo_3_InstaDev.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.Username = HttpContext.Session.GetString("_NomeDeUsuario");
             return View();
         }
 
