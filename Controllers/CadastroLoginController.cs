@@ -22,6 +22,7 @@ namespace Grupo_3_InstaDev.Controllers
         //Instancia da classe Usuario para acessar seus metodos em model
         Usuario usuarioParaAcessoAosMetodosModel = new Usuario();
 
+        [TempData]
         public string Mensagem { get; set; }
 
 
@@ -105,7 +106,7 @@ namespace Grupo_3_InstaDev.Controllers
             if (logado != null)
             {
                 HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[4]);
-                return LocalRedirect("~/Feed");
+                return LocalRedirect("~/");
             }
             Mensagem = "Dados incorretos, tente novamente";
             return LocalRedirect("~/CadastroLoginController/Login");
@@ -114,3 +115,5 @@ namespace Grupo_3_InstaDev.Controllers
 
     }
 }
+
+
