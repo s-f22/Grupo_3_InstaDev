@@ -6,19 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @* Title com configuração para pegar o título de cada página *@
-    <title>@ViewData["Title"] - Grupo_3_InstaDev</title>
+    @* <title>@ViewData["Title"] - Grupo_3_InstaDev</title> *@
 
-    @if (ViewData["Title"].ToString() != "CadastroLogin" && ViewData["Title"].ToString() != "CadastroLoginController")
+    @if (ViewData["Title"].ToString() == "CadastroLogin")
     {
-        <link rel="stylesheet" href="~/css/estilo_EdicaoDePerfil.css">
+        <link rel="stylesheet" href="~/css/estilo_CadastroLogin.css">
+    }
+    
+    @if (ViewData["Title"].ToString() == "Feed")
+    {
+        <link rel="stylesheet" href="~/css/estilo_Feed.css">
     }
 
-    <link rel="stylesheet" href="~/css/estilo_CadastroLogin.css">
+
+
+    
     <script src="https://use.fontawesome.com/4fbb5acd57.js"></script>
 </head>
 
 <body>
-    @if (ViewData["Title"].ToString() != "CadastroLogin" && ViewData["Title"].ToString() != "CadastroLoginController")
+    @if (ViewData["Title"].ToString() != "CadastroLogin")
     {
         <header>
             <div class="conteiner">
@@ -35,7 +42,14 @@
                         <a href=""><i class="fa fa-compass" aria-hidden="true"
                             style="font-size: 26px; color: black;"></i></a>
                         <a href=""><i class="fa fa-heart-o" aria-hidden="true" style="font-size: 26px; color: red;"></i></a>
+                        
+                        @if (ViewBag.ImagemUsuario == "null")
+                        {
+                            <a href=""><img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt=""></a>
+                            @* <a href=""><img src="~/img/Usuarios/padrao.png" width="32px" alt=""></a> *@
+                        }
                         <a href=""><img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt=""></a>
+                        
                         @if (ViewBag.Username != null)
                         {
                             <li>Olá @ViewBag.Username</li>

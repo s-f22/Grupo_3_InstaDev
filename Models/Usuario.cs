@@ -42,7 +42,7 @@ namespace Grupo_3_InstaDev.Models
         private string Preparar(Usuario aConverter)
         {
             //return $"{aConverter.IdUsuario};{aConverter.Email};{aConverter.Senha};{aConverter.NomeCompleto};{aConverter.NomeDeUsuario};{aConverter.ImagemUsuario}";
-            return $"{aConverter.IdUsuario};{aConverter.Email};{aConverter.Senha};{aConverter.NomeCompleto};{aConverter.NomeDeUsuario}";
+            return $"{aConverter.IdUsuario};{aConverter.Email};{aConverter.Senha};{aConverter.NomeCompleto};{aConverter.NomeDeUsuario};{aConverter.ImagemUsuario}";
         }
 
 
@@ -84,7 +84,7 @@ namespace Grupo_3_InstaDev.Models
                 cadaUsuarioDaLista.Senha = atributosEmCadaLinha[2];
                 cadaUsuarioDaLista.NomeCompleto = atributosEmCadaLinha[3];
                 cadaUsuarioDaLista.NomeDeUsuario = atributosEmCadaLinha[4];
-                //cadaUsuarioDaLista.ImagemUsuario = atributosEmCadaLinha[5];
+                cadaUsuarioDaLista.ImagemUsuario = atributosEmCadaLinha[5];
 
                 listaDeUsuarios.Add(cadaUsuarioDaLista);
             }
