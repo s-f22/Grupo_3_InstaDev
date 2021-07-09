@@ -15,7 +15,7 @@ header{
     border: 1px solid #F1F1F1;
 }
 .conteiner{
-    width: 62.5%;
+    width: 75%;
     height: 100%;
 } 
 .conteiner_header{
@@ -32,7 +32,7 @@ header{
   width: 300px;
   height: 40px  ; 
   background: #FAFAFA; 
-  margin-left: 11%;
+  margin-left: 5%;
 }
 .buscar input{
     position: absolute;
@@ -60,9 +60,10 @@ header{
 }
 .icon_inte{
     display: flex;
-    width: 195px;
+    width: 180px;
     justify-content: flex-end;
     justify-content: space-between;
+    margin-left: 10%;
 }
 .icon_inte a{
     text-decoration: none;

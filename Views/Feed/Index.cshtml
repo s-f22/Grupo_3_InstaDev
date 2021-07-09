@@ -13,23 +13,23 @@
 
 
                 @* Usar foreach para ler todos os valores na viewbag que recebe os usuarios em controller
-                @for (var usuario = 0; usuario < 6; i++)
-                {
+                    @for (var usuario = 0; usuario < 6; i++)
+                    {
                     fazer edição de perfil e carregar foto
-                }
+                    }
 
-                @foreach (var cadaUsuario in ViewBag.LU)
-                {
+                    @foreach (var cadaUsuario in ViewBag.LU)
+                    {
 
-                    tag img com atribuição de imagens definidas na classe controller 
+                    tag img com atribuição de imagens definidas na classe controller
                     <td><img src="/img/Usuarios/@cadaUsuario.ImagemUsuario"
-                        alt="imagem do usuario @cadaUsuario.NomeDeUsuario" width="50px"></td>
+                    alt="imagem do usuario @cadaUsuario.NomeDeUsuario" width="50px"></td>
                     Botão de excluir usuario, utilizando o proprio Id do usuario como identificador a ser fornecido como
-                        parametro para o metodo Excluir da classe controller 
+                    parametro para o metodo Excluir da classe controller
                     <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir"
-                        asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
-                } 
-                
+                    asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
+                    }
+
                 *@
 
 
@@ -63,11 +63,11 @@
                     <span>chaves_metal</span>
                 </a>
             </div>
-            <img src="~/img/img_Feed/thank-you 2.svg" alt="">
+            @* <img src="~/img/img_Feed/thank-you 2.svg" alt="">
             <div class="user_name">
                 <span>yes_baby</span>
                 <h1>Marcos Jeeves</h1>
-            </div>
+            </div> *@
         </div>
         <section class="postar">
             <div class="hearder_P">

@@ -5,22 +5,26 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @* Title com configuração para pegar o título de cada página *@
-    @* <title>@ViewData["Title"] - Grupo_3_InstaDev</title> *@
+    
 
     @if (ViewData["Title"].ToString() == "CadastroLogin")
     {
         <link rel="stylesheet" href="~/css/estilo_CadastroLogin.css">
     }
-    
+
     @if (ViewData["Title"].ToString() == "Feed")
     {
         <link rel="stylesheet" href="~/css/estilo_Feed.css">
     }
 
+    @if (ViewData["Title"].ToString() == "EdicaoDePerfil")
+    {
+        <link rel="stylesheet" href="~/css/estilo_EdicaoDePerfil.css">
+    }
 
 
-    
+
+
     <script src="https://use.fontawesome.com/4fbb5acd57.js"></script>
 </head>
 
@@ -42,24 +46,28 @@
                         <a href=""><i class="fa fa-compass" aria-hidden="true"
                             style="font-size: 26px; color: black;"></i></a>
                         <a href=""><i class="fa fa-heart-o" aria-hidden="true" style="font-size: 26px; color: red;"></i></a>
-                        
+
                         @if (ViewBag.ImagemUsuario == null)
                         {
-                            @* <a href=""><img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt=""></a> *@
-                            <a href=""><img src="~/img/Usuarios/padrao.png" width="35px;" alt=""></a>
+                            @* <a href=""><img src="~/img/Usuarios/padrao.png" width="30px;" alt=""></a> *@
+                            <a asp-area="" asp-controller="EdicaoDePerfil" asp-action="Index">
+                                <img src="~/img/Usuarios/padrao.png" width="30px;" alt="">
+                            </a>
                         }
-                        
-                        
+
+                    </ul>
+                    <div class="log">
+
                         @if (ViewBag.Username != null)
                         {
-                            <li>Olá, @ViewBag.Username !</li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Logout">LOGOUT</a></li>
+                            <p>Olá, @ViewBag.Username!</p>
+                            <p><a asp-area="" asp-controller="Home" asp-action="Logout">LOGOUT</a></p>
                         }
                         else
                         {
                             <li><a asp-area="" asp-controller="Home" asp-action="Login">LOGIN</a></li>
                         }
-                    </ul>
+                    </div>
                 </div>
             </div>
         </header>
@@ -71,7 +79,7 @@
         </main>
     </div>
 
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
