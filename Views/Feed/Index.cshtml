@@ -1,14 +1,41 @@
-﻿@{
+﻿@model Usuario
+
+@{
     ViewData["Title"] = "Feed";
 }
+
 
 
 <section class="seguindo">
     <div class="conteiner">
         <div class=" conteiner_seguindo">
             <div class="box_S">
+
+
+                @* Usar foreach para ler todos os valores na viewbag que recebe os usuarios em controller
+                @for (var usuario = 0; usuario < 6; i++)
+                {
+                    fazer edição de perfil e carregar foto
+                }
+
+                @foreach (var cadaUsuario in ViewBag.LU)
+                {
+
+                    tag img com atribuição de imagens definidas na classe controller 
+                    <td><img src="/img/Usuarios/@cadaUsuario.ImagemUsuario"
+                        alt="imagem do usuario @cadaUsuario.NomeDeUsuario" width="50px"></td>
+                    Botão de excluir usuario, utilizando o proprio Id do usuario como identificador a ser fornecido como
+                        parametro para o metodo Excluir da classe controller 
+                    <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir"
+                        asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
+                } 
+                
+                *@
+
+
+
                 <a href="#">
-                    <img src="~/img/img_Feed/vin-diesel 1.svg" alt="">
+                    <img src="~/img/Usuarios/padrao.png" width="115px" alt="">
                     <span>vin_diesel</span>
                 </a>
                 <a href="#">

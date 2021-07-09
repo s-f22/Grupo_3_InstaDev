@@ -1,4 +1,4 @@
-/*using System.IO;
+using System.IO;
 using Grupo_3_InstaDev.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -182,4 +182,4 @@ namespace Grupo_3_InstaDev.Controllers
 
 
     }
-}*/
+}

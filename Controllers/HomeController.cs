@@ -64,7 +64,7 @@ namespace Grupo_3_InstaDev.Controllers
             usuarioParaReceberInfosDoFormulario.Senha = (formulario["Senha"]);
             usuarioParaReceberInfosDoFormulario.NomeCompleto = (formulario["NomeCompleto"]);
             usuarioParaReceberInfosDoFormulario.NomeDeUsuario = (formulario["NomeDeUsuario"]);
-            usuarioParaReceberInfosDoFormulario.ImagemUsuario = "null"; 
+            usuarioParaReceberInfosDoFormulario.ImagemUsuario = ""; 
 
 
 
@@ -122,7 +122,7 @@ namespace Grupo_3_InstaDev.Controllers
 
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("_UserName");
+            HttpContext.Session.Remove("_NomeDeUsuario");
             return LocalRedirect("~/");
         }
     }
