@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Grupo_3_InstaDev.Models;
 using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Grupo_3_InstaDev.Controllers
 {
@@ -64,7 +65,61 @@ namespace Grupo_3_InstaDev.Controllers
             usuarioParaReceberInfosDoFormulario.Senha = (formulario["Senha"]);
             usuarioParaReceberInfosDoFormulario.NomeCompleto = (formulario["NomeCompleto"]);
             usuarioParaReceberInfosDoFormulario.NomeDeUsuario = (formulario["NomeDeUsuario"]);
-            usuarioParaReceberInfosDoFormulario.ImagemUsuario = ""; 
+            //usuarioParaReceberInfosDoFormulario.ImagemUsuario = ""; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // Upload Inicio
+            if (formulario.Files.Count > 0)
+            {
+                var file = formulario.Files[0];
+                var folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
+
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", folder, file.FileName);
+
+                using (var stream = new FileStream(path, FileMode.Create)) // stream poderia ter qualeuer outro nome
+                {
+                    file.CopyTo(stream);
+                }
+
+                usuarioParaReceberInfosDoFormulario.ImagemUsuario = file.FileName;
+            }
+            else
+            {
+                usuarioParaReceberInfosDoFormulario.ImagemUsuario = "padrao.png";
+            }
+
+            // Upload Final
+
+            
+
+            
+
+            
+        
+            
+
+
+
+
+
+
+
 
 
 
@@ -75,6 +130,7 @@ namespace Grupo_3_InstaDev.Controllers
 
             //Redireciona como retorno para a mesma pagina, pois queremos que apos o cadastro o usuario permaneça na mesma view
             //return LocalRedirect("~/CadastroLoginController/Listar");
+            //return LocalRedirect("~/Equipe/Listar");
             return LocalRedirect("~/");
 
         }
