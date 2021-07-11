@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Usuario
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -47,13 +49,14 @@
                             style="font-size: 26px; color: black;"></i></a>
                         <a href=""><i class="fa fa-heart-o" aria-hidden="true" style="font-size: 26px; color: red;"></i></a>
 
-                        @if (ViewBag.ImagemUsuario == null)
-                        {
+                        @* @if (ViewBag.ImagemUsuario == null) *@
+                        @* { *@
                             @* <a href=""><img src="~/img/Usuarios/padrao.png" width="30px;" alt=""></a> *@
                             <a asp-area="" asp-controller="EdicaoDePerfil" asp-action="Index">
+                                @* <img src="~/img/Usuarios/padrao.png" width="30px;" alt=""> *@
                                 <img src="~/img/Usuarios/padrao.png" width="30px;" alt="">
                             </a>
-                        }
+                        @* } *@
 
                     </ul>
                     <div class="log">

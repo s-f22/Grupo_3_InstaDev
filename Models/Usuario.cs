@@ -39,7 +39,7 @@ namespace Grupo_3_InstaDev.Models
 
 
         //Metodo auxiliar do metodo Criar (abaixo). Converte os atributos do usuario recebido como parametro em string, que será retornada utilizando caracter de separação especifico (no caso, ;)
-        private string Preparar(Usuario aConverter)
+        public string Preparar(Usuario aConverter)
         {
             //return $"{aConverter.IdUsuario};{aConverter.Email};{aConverter.Senha};{aConverter.NomeCompleto};{aConverter.NomeDeUsuario};{aConverter.ImagemUsuario}";
             return $"{aConverter.IdUsuario};{aConverter.Email};{aConverter.Senha};{aConverter.NomeCompleto};{aConverter.NomeDeUsuario};{aConverter.ImagemUsuario}";

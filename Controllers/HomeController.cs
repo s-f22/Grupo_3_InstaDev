@@ -15,6 +15,7 @@ namespace Grupo_3_InstaDev.Controllers
     {
         Usuario usuarioParaAcessoAosMetodosModel = new Usuario();
 
+
         [TempData]
         public string Mensagem { get; set; }
 
@@ -28,9 +29,7 @@ namespace Grupo_3_InstaDev.Controllers
         
         public IActionResult Index()
         {
-            ViewBag.Username = HttpContext.Session.GetString("_NomeDeUsuario");
-            ViewBag.ImagemUsuario = HttpContext.Session.GetString("_ImagemUsuario");
-
+            
             return View();
         }
 
@@ -65,7 +64,7 @@ namespace Grupo_3_InstaDev.Controllers
             usuarioParaReceberInfosDoFormulario.Senha = (formulario["Senha"]);
             usuarioParaReceberInfosDoFormulario.NomeCompleto = (formulario["NomeCompleto"]);
             usuarioParaReceberInfosDoFormulario.NomeDeUsuario = (formulario["NomeDeUsuario"]);
-            //usuarioParaReceberInfosDoFormulario.ImagemUsuario = ""; 
+            usuarioParaReceberInfosDoFormulario.ImagemUsuario = "~/img/Usuarios/padrao.png"; 
 
 
 
@@ -79,32 +78,32 @@ namespace Grupo_3_InstaDev.Controllers
 
 
 
-            // Upload Inicio
-            if (formulario.Files.Count > 0)
-            {
-                var file = formulario.Files[0];
-                var folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
+            // // Upload Inicio
+            // if (formulario.Files.Count > 0)
+            // {
+            //     var file = formulario.Files[0];
+            //     var folder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/Equipes");
 
-                if (!Directory.Exists(folder))
-                {
-                    Directory.CreateDirectory(folder);
-                }
+            //     if (!Directory.Exists(folder))
+            //     {
+            //         Directory.CreateDirectory(folder);
+            //     }
 
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", folder, file.FileName);
+            //     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img", folder, file.FileName);
 
-                using (var stream = new FileStream(path, FileMode.Create)) // stream poderia ter qualeuer outro nome
-                {
-                    file.CopyTo(stream);
-                }
+            //     using (var stream = new FileStream(path, FileMode.Create)) // stream poderia ter qualeuer outro nome
+            //     {
+            //         file.CopyTo(stream);
+            //     }
 
-                usuarioParaReceberInfosDoFormulario.ImagemUsuario = file.FileName;
-            }
-            else
-            {
-                usuarioParaReceberInfosDoFormulario.ImagemUsuario = "padrao.png";
-            }
+            //     usuarioParaReceberInfosDoFormulario.ImagemUsuario = file.FileName;
+            // }
+            // else
+            // {
+            //     usuarioParaReceberInfosDoFormulario.ImagemUsuario = "padrao.png";
+            // }
 
-            // Upload Final
+            // // Upload Final
 
             
 
@@ -131,6 +130,7 @@ namespace Grupo_3_InstaDev.Controllers
             //Redireciona como retorno para a mesma pagina, pois queremos que apos o cadastro o usuario permaneça na mesma view
             //return LocalRedirect("~/CadastroLoginController/Listar");
             //return LocalRedirect("~/Equipe/Listar");
+
             return LocalRedirect("~/");
 
         }
@@ -167,10 +167,12 @@ namespace Grupo_3_InstaDev.Controllers
 
             if (logado != null)
             {
+                HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[0]);
                 HttpContext.Session.SetString("_NomeDeUsuario", logado.Split(";")[4]);
                 HttpContext.Session.SetString("_ImagemUsuario", logado.Split(";")[5]);
                 return LocalRedirect("~/Feed");
             }
+
             Mensagem = "Dados incorretos, tente novamente.";
             return LocalRedirect("~/");
         }
