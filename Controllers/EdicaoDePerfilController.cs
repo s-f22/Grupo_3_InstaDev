@@ -17,6 +17,15 @@ namespace Grupo_3_InstaDev.Controllers
         {
             ViewBag.Username = HttpContext.Session.GetString("_NomeDeUsuario");
             ViewBag.UserID = HttpContext.Session.GetString("_IdUsuario");
+            ViewBag.Userimage = HttpContext.Session.GetString("_ImagemUsuario");
+
+            ViewBag.Useremail = HttpContext.Session.GetString("_EmailUsuario");
+            ViewBag.Usersenha = HttpContext.Session.GetString("_SenhaUsuario");
+            ViewBag.Usernomecompleto = HttpContext.Session.GetString("_NomeCompletoUsuario");
+
+                
+                
+
             return View();
         }
 
@@ -32,7 +41,7 @@ namespace Grupo_3_InstaDev.Controllers
             List<string> listaComConteudoDoArquivoCSV = usuarioParaAcessoAosMetodosModel.LerTodasLinhasCSV("DataBase/Usuario.csv");
 
             //Remove um determinado objeto da lista utilizando expressão lambda referenciada pelo Id do usuario para localiza-lo na lista
-            listaComConteudoDoArquivoCSV.RemoveAll( cadaAtributoNaLinha => cadaAtributoNaLinha.Split(";")[0] == int.Parse(ViewBag.UserID)  );
+            listaComConteudoDoArquivoCSV.RemoveAll( cadaAtributoNaLinha => cadaAtributoNaLinha.Split(";")[0] == HttpContext.Session.GetString("_IdUsuario")  );
 
             
 
@@ -72,7 +81,22 @@ namespace Grupo_3_InstaDev.Controllers
                     file.CopyTo(stream);
                 }
 
-                usuarioParaReceberInfosDoFormulario.ImagemUsuario = "~/img/Usuarios/" + file.FileName.ToString();
+                usuarioParaReceberInfosDoFormulario.IdUsuario = int.Parse(ViewBag.UserID);
+                usuarioParaReceberInfosDoFormulario.Email = ViewBag.Useremail;
+                usuarioParaReceberInfosDoFormulario.Senha = ViewBag.Usersenha;
+                usuarioParaReceberInfosDoFormulario.NomeCompleto = ViewBag.Usernomecompleto;
+                usuarioParaReceberInfosDoFormulario.NomeDeUsuario = ViewBag.Username;
+                usuarioParaReceberInfosDoFormulario.ImagemUsuario = "/img/Usuarios/" + file.FileName.ToString();
+
+
+            //     ViewBag.Username = HttpContext.Session.GetString("_NomeDeUsuario");
+            // ViewBag.UserID = HttpContext.Session.GetString("_IdUsuario");
+            // ViewBag.Userimage = HttpContext.Session.GetString("_ImagemUsuario");
+
+            // ViewBag.Useremail = HttpContext.Session.GetString("_EmailUsuario");
+            // ViewBag.Usersenha = HttpContext.Session.GetString("_SenhaUsuario");
+            // ViewBag.Usernomecompleto = HttpContext.Session.GetString("_NomeCompletoUsuario");
+                
             }
             // else
             // {

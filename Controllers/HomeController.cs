@@ -29,6 +29,9 @@ namespace Grupo_3_InstaDev.Controllers
         
         public IActionResult Index()
         {
+            ViewBag.Username = HttpContext.Session.GetString("_NomeDeUsuario");
+            ViewBag.UserID = HttpContext.Session.GetString("_IdUsuario");
+            ViewBag.Userimage = HttpContext.Session.GetString("_ImagemUsuario");
             
             return View();
         }
@@ -64,7 +67,7 @@ namespace Grupo_3_InstaDev.Controllers
             usuarioParaReceberInfosDoFormulario.Senha = (formulario["Senha"]);
             usuarioParaReceberInfosDoFormulario.NomeCompleto = (formulario["NomeCompleto"]);
             usuarioParaReceberInfosDoFormulario.NomeDeUsuario = (formulario["NomeDeUsuario"]);
-            usuarioParaReceberInfosDoFormulario.ImagemUsuario = "~/img/Usuarios/padrao.png"; 
+            usuarioParaReceberInfosDoFormulario.ImagemUsuario = "/img/Usuarios/padrao.png"; 
 
 
 
@@ -168,6 +171,9 @@ namespace Grupo_3_InstaDev.Controllers
             if (logado != null)
             {
                 HttpContext.Session.SetString("_IdUsuario", logado.Split(";")[0]);
+                HttpContext.Session.SetString("_EmailUsuario", logado.Split(";")[1]);
+                HttpContext.Session.SetString("_SenhaUsuario", logado.Split(";")[2]);
+                HttpContext.Session.SetString("_NomeCompletoUsuario", logado.Split(";")[3]);
                 HttpContext.Session.SetString("_NomeDeUsuario", logado.Split(";")[4]);
                 HttpContext.Session.SetString("_ImagemUsuario", logado.Split(";")[5]);
                 return LocalRedirect("~/Feed");

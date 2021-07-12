@@ -1,3 +1,5 @@
+@model Usuario
+
 @{
     ViewData["Title"] = "EdicaoDePerfil";
 }
@@ -14,9 +16,10 @@
                 </div>
                 <div class="perfil_U">
                     <div class="foto_perfil">
-                        <img src="~/img/img_EdicaoPerfil/thank-you 1.png" alt="">
+                        @* <img src="~/img/img_EdicaoPerfil/thank-you 1.png" width="45px" alt=""> *@
+                        <img src="@ViewBag.Userimage" width="45px" alt="">
                         <div class="U">
-                            <span>yes_baby</span>
+                            <span>@ViewBag.Username</span>
                             @* <a href="#">Alterar foto de perfil</a> *@
 
                             <form method="POST" action='@Url.Action("TrocarImagem")' enctype="multipart/form-data">
