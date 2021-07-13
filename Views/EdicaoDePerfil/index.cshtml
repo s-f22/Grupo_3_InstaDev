@@ -32,8 +32,11 @@
                             </form>
                         </div>
                     </div>
-                    <div class="inputs">
+
+                    <form class="inputs" method="POST" action='@Url.Action("AlterarDados")'>
+
                         <div class="input_nome">
+
 
                             <div class="N">
                                 <div class="title">
@@ -41,7 +44,7 @@
                                 </div>
 
                                 <div class="right">
-                                    <input type="text">
+                                    <input placeholder=" @ViewBag.Usernomecompleto" type="text" name="NomeCompleto">
                                     <div class="span">
                                         <span>Ajude as pessoas a descobrir sua conta usando o nome pelo qual você é
                                             conhecido: seu nome completo, apelido ou nome comercial.</span>
@@ -60,7 +63,7 @@
                                 </div>
 
                                 <div class="NU_right">
-                                    <input type="text">
+                                    <input placeholder=" @ViewBag.Username" type="text" name="NomeUsuario">
                                     <div class="textoSpam">
                                         <span>Na maioria dos casos, você poderá alterar seu nome de usuário
                                             novamente
@@ -88,15 +91,17 @@
                                     <span class="S">Email</span>
                                 </div>
 
-                                <input type="text">
+                                <input placeholder=" @ViewBag.Useremail" type="text" name="Email">
 
                             </div>
                         </div>
                         <div class="bt">
                             <input type="submit" value="Enviar">
                             <a href="#">Desativar minha conta definitivamente</a>
+
                         </div>
-                    </div>
+
+                    </form>
                 </div>
             </div>
 

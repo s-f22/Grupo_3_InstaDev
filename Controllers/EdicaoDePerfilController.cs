@@ -45,23 +45,6 @@ namespace Grupo_3_InstaDev.Controllers
 
             
 
-            // List<string> UsuarioCSV = usuarioParaAcessoAosMetodosModel.LerTodasLinhasCSV("DataBase/Usuario.csv");
-
-            // var alterar = UsuarioCSV.Find(x =>
-            //   x.Split(";")[0] == ViewBag.UserID 
-            //     );
-
-            // if (alterar != null)
-            // {
-            //     HttpContext.Session.SetString("_NomeDeUsuario", alterar.Split(";")[4]);
-            //     HttpContext.Session.SetString("_ImagemUsuario", alterar.Split(";")[5]);
-            //     return LocalRedirect("~/Feed");
-            // }
-
-
-
-
-
 
             // Upload Inicio
             if (form.Files.Count > 0)
@@ -81,27 +64,16 @@ namespace Grupo_3_InstaDev.Controllers
                     file.CopyTo(stream);
                 }
 
-                usuarioParaReceberInfosDoFormulario.IdUsuario = int.Parse(ViewBag.UserID);
-                usuarioParaReceberInfosDoFormulario.Email = ViewBag.Useremail;
-                usuarioParaReceberInfosDoFormulario.Senha = ViewBag.Usersenha;
-                usuarioParaReceberInfosDoFormulario.NomeCompleto = ViewBag.Usernomecompleto;
-                usuarioParaReceberInfosDoFormulario.NomeDeUsuario = ViewBag.Username;
+                usuarioParaReceberInfosDoFormulario.IdUsuario = int.Parse( HttpContext.Session.GetString("_IdUsuario") ) ;
+                usuarioParaReceberInfosDoFormulario.Email = HttpContext.Session.GetString("_EmailUsuario");
+                usuarioParaReceberInfosDoFormulario.Senha = HttpContext.Session.GetString("_SenhaUsuario");
+                usuarioParaReceberInfosDoFormulario.NomeCompleto = HttpContext.Session.GetString("_NomeCompletoUsuario");
+                usuarioParaReceberInfosDoFormulario.NomeDeUsuario = HttpContext.Session.GetString("_NomeDeUsuario");
                 usuarioParaReceberInfosDoFormulario.ImagemUsuario = "/img/Usuarios/" + file.FileName.ToString();
-
-
-            //     ViewBag.Username = HttpContext.Session.GetString("_NomeDeUsuario");
-            // ViewBag.UserID = HttpContext.Session.GetString("_IdUsuario");
-            // ViewBag.Userimage = HttpContext.Session.GetString("_ImagemUsuario");
-
-            // ViewBag.Useremail = HttpContext.Session.GetString("_EmailUsuario");
-            // ViewBag.Usersenha = HttpContext.Session.GetString("_SenhaUsuario");
-            // ViewBag.Usernomecompleto = HttpContext.Session.GetString("_NomeCompletoUsuario");
+                ViewBag.Userimage = usuarioParaReceberInfosDoFormulario.ImagemUsuario;
                 
             }
-            // else
-            // {
-            //     usuarioParaReceberInfosDoFormulario.ImagemUsuario = "wwwroot/img/Usuarios/padrao.png";
-            // }
+         
 
             // Upload Final
 
@@ -122,6 +94,27 @@ namespace Grupo_3_InstaDev.Controllers
         }
 
 
+        public IActionResult AlterarDados(IFormCollection form) 
+        {
+            Usuario metodos = new Usuario();
+
+            List<Usuario> usuarios = new List<Usuario>();
+
+            usuarios = metodos.LerTodosUsuarios();
+
+            Usuario u_alterado = usuarios.Find( x => x.IdUsuario == int.Parse( HttpContext.Session.GetString("_IdUsuario") ) );
+
+            u_alterado.NomeCompleto = form[ "NomeCompleto" ];
+            u_alterado.NomeDeUsuario = form[ "NomeUsuario" ];
+            u_alterado.Email = form[ "Email" ];
+
+
+            metodos.Alterar(u_alterado);
+
+            return LocalRedirect("~/EdicaoDePerfil");
+        }
+
+           
 
 
 
