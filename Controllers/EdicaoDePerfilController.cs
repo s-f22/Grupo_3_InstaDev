@@ -87,7 +87,7 @@ namespace Grupo_3_InstaDev.Controllers
             //usuarioParaAcessoAosMetodosModel.Alterar(usuarioParaReceberInfosDoFormulario);
 
 
-            return LocalRedirect("~/EdicaoDePerfil");
+            return LocalRedirect("~/Home/Logout");
 
 
 
@@ -111,7 +111,7 @@ namespace Grupo_3_InstaDev.Controllers
 
             metodos.Alterar(u_alterado);
 
-            return LocalRedirect("~/EdicaoDePerfil");
+            return LocalRedirect("~/Home/Logout");
         }
 
            

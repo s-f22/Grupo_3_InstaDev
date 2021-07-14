@@ -8,70 +8,36 @@
 
 <section class="seguindo">
     <div class="conteiner">
+
         <div class=" conteiner_seguindo">
             <div class="box_S">
 
+                @{
+                    int contador = 1;
 
-                @* Usar foreach para ler todos os valores na viewbag que recebe os usuarios em controller
-                    @for (var usuario = 0; usuario < 6; i++)
+                    foreach (Usuario usuario in ViewBag.LU)
                     {
-                    fazer edição de perfil e carregar foto
+                        if (contador <= 7)
+                        {
+                            <a href="#">
+                                <img src="@usuario.ImagemUsuario" width="115px" alt="">
+                                <span>@usuario.NomeDeUsuario</span>
+                            </a>
+                        }
+
+                        contador++;
                     }
 
-                    @foreach (var cadaUsuario in ViewBag.LU)
-                    {
+                }
 
-                    tag img com atribuição de imagens definidas na classe controller
-                    <td><img src="/img/Usuarios/@cadaUsuario.ImagemUsuario"
-                    alt="imagem do usuario @cadaUsuario.NomeDeUsuario" width="50px"></td>
-                    Botão de excluir usuario, utilizando o proprio Id do usuario como identificador a ser fornecido como
-                    parametro para o metodo Excluir da classe controller
-                    <td><a asp-area="" asp-controller="Equipe" asp-action="Excluir"
-                    asp-route-id="@cadaUsuario.IdUsuario">Excluir</a></td>
-                    }
-
-                *@
-
-
-
-                <a href="#">
-                    <img src="~/img/Usuarios/padrao.png" width="115px" alt="">
-                    <span>vin_diesel</span>
-                </a>
-                <a href="#">
-                    <img src="~/img/img_Feed/gabigordo 1.svg" alt="">
-                    <span>gabigordo</span>
-                </a>
-                <a href="#">
-                    <img src="~/img/img_Feed/will-baiano 1.svg" alt="">
-                    <span>will_baiano</span>
-                </a>
-                <a href="#">
-                    <img src="~/img/img_Feed/tony_stark 1.svg" alt="">
-                    <span>adriano_stark</span>
-                </a>
-                <a href="#">
-                    <img src="~/img/img_Feed/pele 1.svg" alt="">
-                    <span>king_pele</span>
-                </a>
-                <a href="#">
-                    <img src="~/img/img_Feed/samuel-rosa-bebê 1.svg" alt="">
-                    <span>samuel_rosa</span>
-                </a>
-                <a href="#">
-                    <img src="~/img/img_Feed/chaves_metal 1.svg" alt="">
-                    <span>chaves_metal</span>
-                </a>
             </div>
-            @* <img src="~/img/img_Feed/thank-you 2.svg" alt="">
-            <div class="user_name">
-                <span>yes_baby</span>
-                <h1>Marcos Jeeves</h1>
-            </div> *@
         </div>
+
+
+
         <section class="postar">
             <div class="hearder_P">
-                <img src="~/img/img_Feed/thank-you 3.svg" alt="">
+                <img src="@ViewBag.Userimage" width="45px" alt="">
                 <span>Postar</span>
             </div>
             <div class="btn_postar">
@@ -81,30 +47,40 @@
                 <input type="submit" value="Postar">
             </div>
         </section>
-        <section class="postado">
-            <img src="~/img/img_Feed/gabigordo 2.svg" alt="">
-            <div class="user_name_Postado">
-                <span>gabigordo</span>
-                <h2>Flamengo, RJ</h2>
+
+
+
+
+        <div>
+            <section class="postado">
+                <img src="~/img/img_Feed/gabigordo 2.svg" alt="">
+                <div class="user_name_Postado">
+                    <span>gabigordo</span>
+                    <h2>Flamengo, RJ</h2>
+                </div>
+            </section>
+            <div class="img_postado">
+                <img src="~/img/img_Feed/post-gabigordo 1.svg" alt="">
             </div>
-        </section>
-        <div class="img_postado">
-            <img src="~/img/img_Feed/post-gabigordo 1.svg" alt="">
+            <div class="icon_but_postado">
+                <i class="fa fa-heart-o" aria-hidden="true" style="font-size: 28px;"></i>
+                <i class="fa fa-comment-o" aria-hidden="true" style="font-size: 28px;"></i>
+                <input type="text" placeholder="Comentar">
+            </div>
+            <div class="Curt">
+                <span class="curtidas">2077 curtidas</span>
+            </div>
+            <div class="comentarios">
+                <span><span class="UserName_comentarios">gabigordo</span> <a href="">#flamengo</a> Amo vocês mil milhões
+                </span>
+                <span><span class="UserName_comentarios">yes_baby</span> thank you</span>
+                <span><span class="UserName_comentarios">king_pele</span> king_pele Esses são bons de bola,
+                    entende?</span>
+            </div>
         </div>
-        <div class="icon_but_postado">
-            <i class="fa fa-heart-o" aria-hidden="true" style="font-size: 28px;"></i>
-            <i class="fa fa-comment-o" aria-hidden="true" style="font-size: 28px;"></i>
-            <input type="text" placeholder="Comentar">
-        </div>
-        <div class="Curt">
-            <span class="curtidas">2077 curtidas</span>
-        </div>
-        <div class="comentarios">
-            <span><span class="UserName_comentarios">gabigordo</span> <a href="">#flamengo</a> Amo vocês mil milhões
-            </span>
-            <span><span class="UserName_comentarios">yes_baby</span> thank you</span>
-            <span><span class="UserName_comentarios">king_pele</span> king_pele Esses são bons de bola, entende?</span>
-        </div>
+
+
+
         <!-- outra postagem -->
         <section class="postado">
             <img src="~/img/img_Feed/gabigordo 2.svg" alt="">
@@ -130,29 +106,8 @@
             <span><span class="UserName_comentarios">yes_baby</span> thank you</span>
             <span><span class="UserName_comentarios">king_pele</span> king_pele Esses são bons de bola, entende?</span>
         </div>
-        <section class="postado">
-            <img src="~/img/img_Feed/gabigordo 2.svg" alt="">
-            <div class="user_name_Postado">
-                <span>gabigordo</span>
-                <h2>Flamengo, RJ</h2>
-            </div>
-        </section>
-        <div class="img_postado">
-            <img src="~/img/img_Feed/post-gabigordo 1.svg" alt="">
-        </div>
-        <div class="icon_but_postado">
-            <i class="fa fa-heart-o" aria-hidden="true" style="font-size: 28px;"></i>
-            <i class="fa fa-comment-o" aria-hidden="true" style="font-size: 28px;"></i>
-            <input type="text" placeholder="Comentar">
-        </div>
-        <div class="Curt">
-            <span class="curtidas">2077 curtidas</span>
-        </div>
-        <div class="comentarios">
-            <span><span class="UserName_comentarios">gabigordo</span> <a href="">#flamengo</a> Amo vocês mil milhões
-            </span>
-            <span><span class="UserName_comentarios">yes_baby</span> thank you</span>
-            <span><span class="UserName_comentarios">king_pele</span> king_pele Esses são bons de bola, entende?</span>
-        </div>
+
+
+
     </div>
 </section>

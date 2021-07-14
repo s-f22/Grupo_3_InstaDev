@@ -9,6 +9,7 @@ namespace Grupo_3_InstaDev.Models
         public string TextoPost { get; set; }
         public string ImagemPost { get; set; }
         public int PostID { get; set; }
+        public int PostIDUsuario { get; set; }
 
 
 
@@ -23,7 +24,7 @@ namespace Grupo_3_InstaDev.Models
 
         private string Preparar(Post aConverter)
         {
-            return $"{aConverter.PostID};{aConverter.TextoPost};{aConverter.ImagemPost}";
+            return $"{aConverter.PostID};{aConverter.TextoPost};{aConverter.ImagemPost};{aConverter.PostIDUsuario}";
         }
 
 
@@ -51,6 +52,7 @@ namespace Grupo_3_InstaDev.Models
                 cadaPostDaLista.PostID = int.Parse(atributosEmCadaLinha[0]);
                 cadaPostDaLista.TextoPost = atributosEmCadaLinha[1];
                 cadaPostDaLista.ImagemPost = atributosEmCadaLinha[2];
+                cadaPostDaLista.PostIDUsuario = int.Parse(atributosEmCadaLinha[3]);
 
                 listaDePosts.Add(cadaPostDaLista);
             }
